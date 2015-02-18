@@ -1,0 +1,17 @@
+/*-----------------------------------*\
+    $BUTTONS
+\*-----------------------------------*/
+.pagination-nav {
+    .btn{
+        background:$light;
+        box-shadow:0px 1px 3px $shadow;
+    }
+        .btn a{
+            color:$text;
+        }
+
+    .btn--disabled{
+        box-shadow:none;
+        cursor:default;
+    }
+}

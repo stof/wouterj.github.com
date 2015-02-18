@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset=utf-8>
+
+        <title>CSS voor objecten</title>
+        
+                <meta name=viewport content="width=device-width">
+        
+                <link rel=stylesheet href=/css/wouterj.css>
+        <link href=http://fonts.googleapis.com/css?family=Ubuntu+Mono|Roboto+Slab:700|Open+Sans:300italic,300,700 rel=stylesheet type=text/css>
+                
+        <!-- Prettifier -->
+<script src="/libs/prettifier/google-code-prettify/prettify.js"></script>
+<link rel=stylesheet href="/libs/prettifier/prettifier.css">
+<script>
+    window.onload = function() {
+        prettyPrint();
+    };
+</script>
+    </head>
+    <body class=page itemscope itemtype="http://schema.org/WebPage">
+        <header class=page__header>
+
+            <hgroup class=page__headline>
+                <h1 class="hN  site-title" itemprop="name"><a href="/">Wouter J</a></h1>
+                                <h3 class="hN  site-slogan">A script is more than just code</h3>
+                            </hgroup>
+
+            <nav class=page__nav>
+                <ul class="nav  nav--block">
+                                                            <li class="nav__item"><a href="/">Home</a></li>
+                                        <li class="nav__item"><a href="/categories/article"><i class=icon>&#xF139;</i> <span class="button__text">Articles</span></a></li>
+                                        <li class="nav__item"><a href="/categories/news"><i class=icon>&#xF0CA;</i> <span class="button__text">News</span></a></li>
+                                        <li class="nav__item"><a href="/categories/opinion"><i class=icon>&#xF075;</i> <span class="button__text">Opinions</span></a></li>
+                                        <li class="nav__item"><a href="/categories/experiment"><i class=icon>&#xF051;</i> <span class="button__text">Experiments</span></a></li>
+                                    </ul>
+            </nav>
+        </header>
+
+        <div class=page__body itemscope itemtype="http://schema.org/Blog">
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <span class="post__category">
+            &#xf139;
+        </span>    <h1 class="post__heading" itemprop="headline">CSS voor objecten</h1>
+
+        <img src="http://wouterj.nl/img/css-objecten-thumb.png" class="post__thumbnail  img--stripe  img--short  img--left" itemprop="thumbnailUrl">
+    
+    <div class="post__entry" itemprop="articleBody">
+        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p class="post__intro">Dat je kunt programmeren in objecten is waarschijnlijk al bekent. Maar dat je
+ook CSS in objecten kunt gebruiken is nog vrij nieuw. Tijd om dat eens te
+ontdekken!</p><div class="cf"></div>
+
+<h2 id="de-concepten"><a href="#de-concepten" class="section-link">&#61544;</a>De concepten</h2>
+
+<h3 id="onderhoud"><a href="#onderhoud" class="section-link">&#61544;</a>Onderhoud</h3>
+
+<p>Onderhoud, dat is een hele belangrijke factor in de scriptwereld. Sommige
+mensen kiezen voor een korte ontwikkeltijd, met als nadeel dat je langer doet
+over het onderhoud. Andere mensen kiezen voor een lange ontwikkeltijd,
+waardoor je later sneller dingen kunt aanpassen. Die laatste methode is naar
+mijn mening de beste, en daar probeer ik mijn lezers van te overtuigen.</p>
+
+<h3 id="hergebruik"><a href="#hergebruik" class="section-link">&#61544;</a>Hergebruik</h3>
+
+<p>CSS code kun je op sommige momenten heel makkelijk hergebruiken. Als ik
+eenmaal een hele mooie button heb gemaakt kan ik die in al mijn toekomstige
+projecten gebruiken. Eigenlijk zou dat zo moeten bij heel veel CSS dingen,
+vind je niet? Stel je nou voor dat je later heel snel een webpagina kan maken,
+doordat je alleen wat CSS scriptjes bij elkaar hoeft te voegen?</p>
+
+<h3 id="overerving"><a href="#overerving" class="section-link">&#61544;</a>Overerving</h3>
+
+<p>Nog zo'n typisch concept in zowel CSS als OO. De C in CSS staat voor
+Cascading, overerving. Waarom zullen we daar dan geen gebruik van maken?</p>
+
+<p>Het probleem is dat het vanuit je CSS file niet duidelijk is waarvan je dingen
+overerft. Je moet in de HTML code kijken naar de klassen, het element en zijn
+parents.</p>
+
+<h2 id="werk-niet-met-elementen-en-ids"><a href="#werk-niet-met-elementen-en-ids" class="section-link">&#61544;</a>Werk NIET met elementen en IDs</h2>
+
+<p>De oplossing is om niet te werken met element selectoren of IDs. Stel je nou
+voor dat je een <code>&lt;header&gt;</code> element stijlt, zodat hij er goed uitziet als
+pagina header. Een maandje later kom je er achter dat je deze header tag ook
+wilt gebruiken voor de header van een artikel. Ai, daar heb je een probleem.
+Die krijgt nu ook al die stijlen van de pagina header mee.</p>
+
+<p>Het kan ook andersom. Je maakt een footer en die stijl je met het id
+<code>#footer</code>. Alles ziet er mooi uit en nu wil je ook dezelfde stijlen gebruiken
+voor de footer in een post. Ga je nu alle CSS code kopieren?</p>
+
+<h3 id="werk-wel-met-classes"><a href="#werk-wel-met-classes" class="section-link">&#61544;</a>Werk WEL met classes</h3>
+
+<p>De oplossing is het gebruik van classes. Hiermee limiteer je jezelf niet tot
+bepaalde elementen, of het maar 1 keer mogen voorkomen in een pagina. Als ik
+de stijlen voor een button wil gebruiken in mijn header dan moet ik vrij
+genoeg zijn om dat te mogen doen.</p>
+
+<h4 id="quasi-qualified-selectors"><a href="#quasi-qualified-selectors" class="section-link">&#61544;</a>Quasi-qualified selectors</h4>
+
+<p>om ons niet te limiteren op bepaalde elementen, maar om toch aan te geven bij
+welk element deze klasse hoort kun je
+<a href="http://csswizardry.com/2012/07/quasi-qualified-css-selectors/">quasi-qualified selectors</a>
+gebruiken. Stel we hebben dit:</p>
+
+<pre class="prettyprint  linenums  lang-css"><code class="css">article.featured{
+    /* ... */
+}
+</code></pre>
+
+<p>Nu kunnen we de <code>.featured</code> class alleen op een <code>&lt;article&gt;</code> element gebruiken.
+Maar misschien wil ik later wel helemaal geen pagina op de homepagina, maar
+wil ik bijv. een <code>&lt;section&gt;</code> of <code>&lt;img&gt;</code> element deze class meegeven.</p>
+
+<p>Om toch aan te geven dat hij bij een <code>article</code> element hoort, maar om hem niet
+te limiteren op dit element, plaatsen we de selector in een comment:</p>
+
+<pre class="prettyprint  linenums  lang-css"><code class="css">/*article*/.featured{
+    /* ... */
+}
+</code></pre>
+
+<p>Voor CSS is dit nu gewoon een <code>.featured</code> class, maar voor de lezer wordt dit
+gezien als een <code>.featured</code> class op een <code>article</code> element: Het is
+quasi-qualified.</p>
+
+<h2 id="de-bem-techniek"><a href="#de-bem-techniek" class="section-link">&#61544;</a>De BEM techniek</h2>
+
+<p>Het basis concept van objecten in CSS wordt
+<a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">BEM</a>
+genoemd. Dit staat voor <b>B</b>lock, <b>E</b>lement, <b>M</b>odifier.</p>
+
+<p>Ik ga een voorbeeld laten zien van deze techniek doormiddel van deze HTML
+code:</p>
+
+<pre class="prettyprint  linenums"><code>&lt;article&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Hello World&lt;/h1&gt;
+        &lt;img src="img/thumbs/hello-world.png"&gt;
+    &lt;/header&gt;
+    &lt;article&gt;
+        &lt;!-- ... --&gt;
+    &lt;/article&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Geplaatst in &lt;a href="..."&gt;Nieuws&lt;/a&gt;&lt;/p&gt;
+
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="..."&gt;Tweet&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="..."&gt;like&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="..."&gt;+1&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>Een Block is het hoofdobject, in ons geval is dit een post. We geven onze
+article element dus een <code>post</code> class mee:</p>
+
+<pre class="prettyprint  linenums"><code>&lt;article class=post&gt;
+    &lt;!-- ... --&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>Een Block heeft children. In ons geval heeft hij een header, body en footer.
+Dit zijn de Elementen. De conventie voor een element class naam is
+<code>block__element</code> (2 underscores). In ons geval wordt het bijvoorbeeld
+<code>post__header</code>:</p>
+
+<pre class="prettyprint  linenums"><code>&lt;article class=post&gt;
+    &lt;header class=post__header&gt;
+        &lt;!-- ... --&gt;
+    &lt;/header&gt;
+    &lt;article class=post__body&gt;
+        &lt;!-- ... --&gt;
+    &lt;/article&gt;
+    &lt;footer class=post__footer&gt;
+        &lt;!-- ... --&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>Deze Elementen hebben ook weer children. Dit zijn ook allemaal Elementen van
+de post, we hebben een <code>post__title</code>, <code>post__tumbnail</code>, ect.:</p>
+
+<pre class="prettyprint  linenums"><code>&lt;article class=post&gt;
+    &lt;header class=post__header&gt;
+        &lt;h1 class=post__title&gt;Hello World&lt;/h1&gt;
+        &lt;img class=post__thumbnail src="img/thumbs/hello-world.png"&gt;
+    &lt;/header&gt;
+    &lt;article class=post__body&gt;
+        &lt;!-- ... --&gt;
+    &lt;/article&gt;
+    &lt;footer class=post__footer&gt;
+        &lt;p class=post__meta&gt;Geplaatst in &lt;a href="..."&gt;Nieuws&lt;/a&gt;&lt;/p&gt;
+
+        &lt;nav class=post__social&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="..."&gt;Tweet&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="..."&gt;like&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="..."&gt;+1&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>Dan hebben we als laatst nog een Modifier. Dit betekend dat het een Block is,
+die net wat anders is als de vorige block. Als je bijv. op de hompagina van
+deze website kijkt zie je dat het nieuwste bericht groter is. Het is een
+uitbereiding van de overige nieuwsblokjes. Dit wordt gedaan doormiddel van een
+modifier.</p>
+
+<p>Zodra je aan een element een Modifier meegeeft geef je ook altijd de Block
+mee. Want, zoals ik in het begin al verkondigde, we moeten gebruiken maken van
+de Cascade.</p>
+
+<p>Een Modifier gebruikt als conventie <code>block--modifier</code>. In ons geval wordt dit
+waarschijnlijk <code>post--latest</code>:</p>
+
+<pre class="prettyprint  linenums"><code>&lt;article class="post  post--latest"&gt;
+    &lt;!-- ... --&gt;
+&lt;/article&gt;
+
+&lt;article class=post&gt;
+    &lt;!-- ... --&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p><aside class="side  side--note" data-type="note">Een opmerkzame lezer zal zien dat ik 2 spaties tussen de classnamen heb
+geplaatst. Hierdoor kun je snel zien wat de classnamen zijn, met 1 spatie
+staan ze te dicht op elkaar om het snel te kunnen zien.</aside></p>
+
+<h2 id="harry-roberts-en-inuit-css"><a href="#harry-roberts-en-inuit-css" class="section-link">&#61544;</a>Harry Roberts en Inuit.css</h2>
+
+<p>Voordat ik stop met schrijven wil ik jullie kennis laten maken met
+<a href="http://csswizardry.com/">Harry Roberts</a> en zijn framework
+<a href="http://inuitcss.com/">Inuit.css</a>.</p>
+
+<p>Harry Roberts is een van de actieve front-end developers die strijden voor het
+gebruik van BEM. Hij heeft 2 jaar gewerkt aan grote websites en heeft daardoor
+een hele interessante kijk op CSS. Het loont zeker de moeite om zijn artikelen
+te lezen.</p>
+
+<p>Daarnaast heeft hij Inuit.CSS gemaakt. Een framework die werkt via het BEM
+principe en zijn meeste andere idee&Atilde;&laquo;n. Deze blog is ook gemaakt via Inuit.CSS
+en de code hiervan kun je
+<a href="https://github.com/WouterJ/wouterj.github.com">bekijken</a>.</p></body></html>
+
+    </div>
+
+        <div id="disqus_thread" class="post__comments" itemprop="comment"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'wouterjnl'; // required: replace example with your forum shortname
+        var disqus_identifier = '1377986400';
+        var disqus_title = 'CSS voor objecten';
+        var disqus_developer = 1;
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+        </div>
+
+        <footer class="page__footer">
+            <p>&copy; Copyright 2012 Wouter de Jong</p>
+        </footer>
+
+                <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30226315-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>
+            </body>
+</html>

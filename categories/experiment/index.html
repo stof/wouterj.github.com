@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <meta charset=utf-8>
+
+        <title>Category Archive</title>
+        
+                <meta name=viewport content="width=device-width">
+        
+                <link rel=stylesheet href=/css/wouterj.css>
+        <link href=http://fonts.googleapis.com/css?family=Ubuntu+Mono|Roboto+Slab:700|Open+Sans:300italic,300,700 rel=stylesheet type=text/css>
+                
+            </head>
+    <body class=page itemscope itemtype="http://schema.org/WebPage">
+        <header class=page__header>
+
+            <hgroup class=page__headline>
+                <h1 class="hN  site-title" itemprop="name"><a href="/">Wouter J</a></h1>
+                                <h3 class="hN  site-slogan">A script is more than just code</h3>
+                            </hgroup>
+
+            <nav class=page__nav>
+                <ul class="nav  nav--block">
+                                                            <li class="nav__item"><a href="/">Home</a></li>
+                                        <li class="nav__item"><a href="/categories/article"><i class=icon>&#xF139;</i> <span class="button__text">Articles</span></a></li>
+                                        <li class="nav__item"><a href="/categories/news"><i class=icon>&#xF0CA;</i> <span class="button__text">News</span></a></li>
+                                        <li class="nav__item"><a href="/categories/opinion"><i class=icon>&#xF075;</i> <span class="button__text">Opinions</span></a></li>
+                                        <li class="nav__item"><a href="/categories/experiment"><i class=icon>&#xF051;</i> <span class="button__text">Experiments</span></a></li>
+                                    </ul>
+            </nav>
+        </header>
+
+        <div class=page__body itemscope itemtype="http://schema.org/Blog">
+            <ul class="gw" id="js-posts">
+        <li class="g  one-whole  desk-one-half  lap-one-half">
+        <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+            <h1 class="post__heading  post__heading--gamma" itemprop="headline"><a href="/2012/03/pure-css3-en-html-slider" itemprop="url">Pure CSS3 en HTML slider</a></h1>
+
+                        <img src="http://wouterj.nl/img/css3-slider-thumb.jpg" class="post__thumbnail  img--stripe  img--short  post__thumbnail--home  img--left" itemprop="thumbnailUrl">
+                        <div class="post__entry  post__entry--excerpt" itemprop="description">
+                Op 10 nov. 2011 zei
+Jeffrey Way op Google+:
+&quot;So here&#039;s what I came up with for my simple CSS3-only slider. Not
+practical yet - but as a proof of concept... http://jsfiddle.net/8TYm3/2/&quot;
+            </div>
+        </article>
+    </li>
+    
+    <li class="g  one-twelfth"></li>
+</ul>
+
+<nav>
+</nav>
+        </div>
+
+        <footer class="page__footer">
+            <p>&copy; Copyright 2012 Wouter de Jong</p>
+        </footer>
+
+                <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30226315-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>
+        
+
+<script src="/libs/masonry/masonry.min.js"></script>
+<script type="text/javascript">
+var wall = new Masonry(document.querySelector('#js-posts'), {
+    columnWidth: '.one-twelfth',
+    itemSelector: '.g'
+});
+</script>
+    </body>
+</html>

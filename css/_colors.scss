@@ -1,0 +1,16 @@
+/*------------------------------------*\
+    $COLORS
+\*------------------------------------*/
+
+$primary1:#cc3333;
+
+$dark:#111111;
+$text:lighten($dark, 13);
+$secondaryText:lighten($dark, 46);
+$hintText:lighten($dark, 74);
+$dividers:lighten($dark, 88);
+$shadow:$secondaryText;
+
+$light:#fdfdfd;
+$lightText:#fefefe;
+$lightShade:#fcfcfc;
